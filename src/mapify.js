@@ -408,9 +408,9 @@
         // Generating our points map based on the csv coordinates
         for (var key in coords) { // Convert percentage coordinates back to pixel coordinates relative to the image size
             if (key % 2 == 0) {  // X
-                zonePoints += ($(this.element).width() * (coords[key] / 100));
+                zonePoints += ~~($(this.element).width() * (coords[key] / 100));
             } else { // Y
-                zonePoints += ',' + ($(this.element).height() * (coords[key] / 100)) + ' ';
+                zonePoints += ',' + ~~($(this.element).height() * (coords[key] / 100)) + ' ';
             }
         }
 
@@ -435,9 +435,9 @@
             var coords = $(this).attr('data-coords').split(',');
             for (var key in coords) { // Convert percentage coordinates back to pixel coordinates relative to the image size
                 if (key % 2 == 0) {  // X
-                    coords[key] = ($(_this.element).width() * (coords[key] / 100));
+                    coords[key] = ~~($(_this.element).width() * (coords[key] / 100));
                 } else { // Y
-                    coords[key] = ($(_this.element).height() * (coords[key] / 100));
+                    coords[key] = ~~($(_this.element).height() * (coords[key] / 100));
                 }
             }
             $(this).attr('coords', coords.toString());
